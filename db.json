@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "Name": "tanjiro",
+      "Regno": "3456780",
+      "Branch": "cse",
+      "Email": "tanjiro@gmail.com",
+      "Mobile": "075678091"
+    }
+  ],
+  "signup": [
+    {
+      "name": "Naruto",
+      "email": "dattebayo@gmail.com",
+      "mobile": 6085679871,
+      "password": "Naruto",
+      "id": 1
+    },
+    {
+      "name": "tim",
+      "email": "tim@gmail.com",
+      "mobile": 3011102,
+      "password": "abcd",
+      "id": 2
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

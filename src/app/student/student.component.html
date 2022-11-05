@@ -1,0 +1,97 @@
+<nav class="navbar navbar-light bg-dark">
+    <div class="container fluid">
+        <h2 CLASS="text-light primary py-3">Student management system</h2>
+
+        <div class="d-flex">
+            <button class="btn btn-success"(click)="add()"data-bs-toggle="modal" data-bs-target="#exampleModal">New student</button>&nbsp;
+            <button routerLink="/login" class="btn btn-warning">Logout</button>
+        </div>
+    </div>
+</nav>
+
+<!----table-->
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th scope="col">S.Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Regno</th>
+            <th scope="col">Branch</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Act</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of allstudentdata">
+            <td>{{data.id}}</td>
+            <td>{{data.Name}}</td>
+            <td>{{data.Regno}}</td>
+            <td>{{data.Branch}}</td>
+            <td>{{data.Email}}</td>
+            <td>{{data.Mobile}}</td>
+            <td>
+                <button class="btn btn-danger"(click)="deletestudent(data)">Delete</button>&nbsp;
+                <button class="btn btn-info"(click)="edit(data)"data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div style="background: lightblue;"class="modal-header">
+          <h5 style="color: darkblue;font-size: 20px;margin-left: 62px;font-weight: 620;"class="modal-title" id="exampleModalLabel">Student management</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formvalue">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name</label>
+                  <input type="Name" formControlName="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name">
+                  <small *ngIf="formvalue.get('Name')?.invalid && formvalue.get('Name')?.touched"class="text-danger">Name is Required</small>
+                </div>
+<br>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Regno</label>
+                    <input type="Regno" formControlName="Regno" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your Regno">
+                    <small *ngIf="formvalue.get('Regno')?.invalid && formvalue.get('Regno')?.touched"class="text-danger">Regno is Required</small>
+                </div>
+<br>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Branch</label>
+                    <input type="Branch" formControlName="Branch" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your Branch">
+                    <small *ngIf="formvalue.get('Branch')?.invalid && formvalue.get('Branch')?.touched"class="text-danger">Branch is Required</small>
+                </div>
+<br>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">email</label>
+                    <input type="email" formControlName="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email ">
+                    <small *ngIf="formvalue.get('Email')?.invalid && formvalue.get('Email')?.touched"class="text-danger">Email is Required</small>
+                </div>
+<br>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Mobile</label>
+                    <input type="Branch" formControlName="Mobile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your Mobile">
+                    <small *ngIf="formvalue.get('Mobile')?.invalid && formvalue.get('Mobile')?.touched"class="text-danger">Mobile is Required</small>
+                </div>
+
+                
+
+
+              </form>
+        </div>
+
+        <div style="background: lightblue" class="modal-footer">
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+          <button *ngIf="showadd" type="button"(click)="addstudent()"[disabled]="formvalue.invalid" class="btn btn-success">Add</button>
+          <button *ngIf="showupdate"type="button"(click)="update()"[disabled]="formvalue.invalid"class="btn btn-success">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
